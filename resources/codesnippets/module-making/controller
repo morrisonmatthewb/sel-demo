@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Controllers\Labs;
+
+class ModuleCreationController extends DefaultController{
+    public static $lab = "module-making";
+    public static $display = "Making a Module";
+    public static $description = "This is a module that shows you how to add a module";
+    public static $pages = [
+        "index" => "",
+        "landing" => "Landing Page",
+        "create-controller" => "Create a Controller",
+        "review" => ""
+    ];
+    public static $objectives = [
+        "Learn how to make a module"
+    ];
+    public static $willlearn = [
+        "How to make a module"
+    ];
+}

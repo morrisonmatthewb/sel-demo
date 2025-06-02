@@ -1,0 +1,6 @@
+# Vulnerable Code - DO NOT USE!
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    file = request.files['file']
+    filename = file.filename
+    file.save(f'/uploads/{filename}')

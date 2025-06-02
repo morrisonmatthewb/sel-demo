@@ -1,0 +1,6 @@
+# Vulnerable Authentication - DO NOT USE!
+def login(username, password):
+    # Weak authentication - plain text password
+    user = users.get(username)
+    if user and user['password'] == password:
+        return "Login successful!"

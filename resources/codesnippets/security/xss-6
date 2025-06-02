@@ -1,0 +1,7 @@
+# If user enters:
+nickname = "<img src='x' onerror='alert(\"Hacked!\")'>"
+
+# HTML becomes:
+<h1>Welcome, 
+    <img src='x' onerror='alert("Hacked!")'>
+</h1>

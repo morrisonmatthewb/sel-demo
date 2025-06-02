@@ -1,0 +1,8 @@
+# Attack 1: Access another user's profile
+GET /api/users/124/profile  # Someone else's profile
+
+# Attack 2: Access admin profile
+GET /api/users/admin/profile  # Admin's profile
+
+# Attack 3: Access first user account
+GET /api/users/1/profile  # First user's profile

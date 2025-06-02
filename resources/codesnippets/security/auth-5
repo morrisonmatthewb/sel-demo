@@ -1,0 +1,5 @@
+def secure_view_document(user_id, document_id):
+    user = get_user(user_id)
+    document = documents.get(document_id)
+    if document and check_permission(user, document):
+        return document

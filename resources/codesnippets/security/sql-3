@@ -1,0 +1,5 @@
+username = "admin' --"
+password = "anything"
+
+# Query becomes:
+"SELECT * FROM users WHERE username='admin' -- ' AND password='anything'"

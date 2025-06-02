@@ -1,0 +1,4 @@
+# Vulnerable Authorization - DO NOT USE!
+def view_document(user_id, document_id):
+    # No permission checking
+    return documents.get(document_id)

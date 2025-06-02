@@ -1,0 +1,12 @@
+def caesar_encrypt(text, shift):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            # Determine the case and base ASCII value
+            ascii_base = ord('A') if char.isupper() else ord('a')
+            # Shift the character and wrap around if necessary
+            shifted = (ord(char) - ascii_base + shift) % 26
+            result += chr(ascii_base + shifted)
+        else:
+            result += char
+    return result

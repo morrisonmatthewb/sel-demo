@@ -1,0 +1,6 @@
+# Vulnerable Form - DO NOT USE!
+<form action="/transfer" method="POST">
+    <input type="text" name="to_account">
+    <input type="number" name="amount">
+    <button type="submit">Transfer</button>
+</form>

@@ -1,0 +1,53 @@
+
+.navbar-default {
+  background-color: #eeeeee;
+  border-color: #bbbbbb;
+}
+
+.navbar-default .navbar-brand {
+  color: #333333;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #000000;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-text {
+  color: #333333;
+}
+
+.navbar-default .navbar-link {
+  color: #333333;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #333333;
+}
+
+.dropdown-menu > li > a {
+  color: #333333;
+}
+
+.dropdown-toggle {
+  color: #333333;
+  background-color: #eeeeee;
+  border: 0;
+  margin-top: 9px;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #000000;
+  background-color: transparent;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+

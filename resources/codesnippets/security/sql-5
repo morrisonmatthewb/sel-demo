@@ -1,0 +1,5 @@
+username = "admin' UNION SELECT * FROM secret_messages --"
+password = "anything"
+
+# Query becomes:
+"SELECT * FROM users WHERE username='admin' UNION SELECT * FROM secret_messages"

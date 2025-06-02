@@ -1,0 +1,4 @@
+def secure_login(username, password):
+    user = users.get(username)
+    if user and verify_password(password, user['password_hash']):
+        return create_session_token(user)

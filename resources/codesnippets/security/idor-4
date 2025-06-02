@@ -1,0 +1,11 @@
+# Profile Pages
+/users/123/settings
+/profile?id=123
+
+# File Downloads
+/download/123.pdf
+/files?document=123
+
+# API Endpoints
+/api/orders/123
+/api/messages/123

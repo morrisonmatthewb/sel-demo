@@ -1,0 +1,10 @@
+# Attack 1: Weak Passwords
+username = "admin"
+password = "password123"  # Common password, easily guessed
+
+# Attack 2: Session Hijacking
+session_token = "user_123"  # Predictable token format
+
+# Attack 3: Missing Authorization
+document_url = "/documents/12345"  # Just changing the ID in URL
+admin_panel = "/admin"  # Trying to access admin pages

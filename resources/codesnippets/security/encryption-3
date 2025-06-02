@@ -1,0 +1,8 @@
+def substitution_encrypt(text, key_map):
+    return ''.join(key_map.get(c, c) for c in text)
+
+key_map = {
+    'A': 'X', 'B': 'Y', 'C': 'Z',
+    'a': 'x', 'b': 'y', 'c': 'z'
+    # ... rest of the alphabet
+}

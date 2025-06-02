@@ -1,0 +1,13 @@
+from cryptography.fernet import Fernet
+
+def secure_storage():
+    # Generate random key
+    key = Fernet.generate_key()
+    cipher = Fernet(key)
+    
+    # Encrypt sensitive data
+    data = "4532-1234-5678-9012"
+    encrypted = cipher.encrypt(data.encode())
+    
+    # Store encrypted data only
+    database["cc"] = encrypted

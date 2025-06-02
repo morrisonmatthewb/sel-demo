@@ -1,0 +1,5 @@
+# Vulnerable Code - DO NOT USE!
+@app.route('/api/users/<user_id>/profile')
+def get_profile(user_id):
+    # Directly fetches profile with no authorization
+    return database.get_profile(user_id)

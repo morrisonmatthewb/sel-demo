@@ -1,0 +1,2 @@
+# Regular user accessing their profile
+GET /api/users/123/profile  # Your own profile

@@ -1,0 +1,3 @@
+message = "HELLO"
+encrypted = caesar_encrypt(message, 3)  # "KHOOR"
+encrypted = caesar_encrypt(message, 13)  # "URYYB"

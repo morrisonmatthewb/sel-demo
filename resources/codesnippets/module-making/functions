@@ -1,0 +1,7 @@
+public static function nonPage($subPath){
+    abort(404);
+}
+
+public static function post($subPath, Request $request){
+    abort(404);
+}

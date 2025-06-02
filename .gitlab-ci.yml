@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+deploy_to_server:
+  stage: deploy
+  script:
+    - echo "Deploying to server..."
+    - mkdir -p ~/.ssh
+    - chmod 600 "$SSH_PRIVATE_KEY"
+    - ssh-keyscan -H vulcanize.cs.umd.edu >> ~/.ssh/known_hosts
+    - ssh -i "$SSH_PRIVATE_KEY" cmsc435@vulcanize.cs.umd.edu 'cd /home/cmsc435/v1 && git pull origin main && php artisan cache:clear && php artisan route:clear && php artisan view:clear'
+  only:
+    - main

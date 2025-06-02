@@ -1,0 +1,6 @@
+@app.route('/api/users/<user_id>/profile')
+@require_login
+def get_profile(user_id):
+    if not can_access_profile(current_user, user_id):
+        return "Access denied", 403
+    return database.get_profile(user_id)

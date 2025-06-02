@@ -1,0 +1,11 @@
+# Weak Encryption - DO NOT USE!
+def weak_encrypt(text):
+    return text[::-1]  # Just reverses the string
+
+# Predictable Key - DO NOT USE!
+def bad_key_generation():
+    return "secret123"  # Hardcoded key
+
+# No Encryption - DO NOT USE!
+def store_credit_card(number):
+    database["cc"] = number  # Storing sensitive data without encryption

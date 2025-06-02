@@ -1,0 +1,21 @@
+# Server-side token generation
+@app.route('/form')
+def show_form():
+    csrf_token = generate_csrf_token()
+    session['csrf_token'] = csrf_token
+    return render_template('form.html', csrf_token=csrf_token)
+
+# Protected form
+<form action="/transfer" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <input type="text" name="to_account">
+    <input type="number" name="amount">
+    <button type="submit">Transfer</button>
+</form>
+
+# Server-side validation
+@app.route('/transfer', methods=['POST'])
+def transfer():
+    if request.form['csrf_token'] != session['csrf_token']:
+        return "Invalid CSRF token", 403
+    # Process transfer...

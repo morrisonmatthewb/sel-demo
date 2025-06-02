@@ -1,0 +1,9 @@
+# If user enters:
+nickname = "<script>alert('Hacked!')</script>"
+
+# HTML becomes:
+<h1>Welcome, 
+    <script>
+        alert('Hacked!');
+    </script>
+</h1>

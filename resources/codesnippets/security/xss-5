@@ -1,0 +1,10 @@
+# If user enters:
+nickname = "<script>document.body.style.backgroundColor='red'; document.body.innerHTML='Hacked!';</script>"
+
+# HTML becomes:
+<h1>Welcome, 
+    <script>
+        document.body.style.backgroundColor='red'; 
+        document.body.innerHTML='Hacked!';
+    </script>
+</h1>

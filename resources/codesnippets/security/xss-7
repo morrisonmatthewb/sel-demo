@@ -1,0 +1,8 @@
+# Protected Code
+from html import escape
+
+@app.route('/profile')
+def show_profile():
+    nickname = request.args.get('nickname')
+    safe_nickname = escape(nickname)
+    return f'<h1>Welcome, {safe_nickname}!</h1>'

@@ -1,0 +1,5 @@
+# If user enters:
+nickname = "Alice"
+
+# HTML becomes:
+<h1>Welcome, Alice!</h1>

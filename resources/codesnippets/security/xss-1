@@ -1,0 +1,5 @@
+# Vulnerable Code - DO NOT USE!
+@app.route('/profile')
+def show_profile():
+    nickname = request.args.get('nickname')
+    return f'<h1>Welcome, {nickname}!</h1>'

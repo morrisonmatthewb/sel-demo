@@ -1,0 +1,6 @@
+# Regular login attempt
+username = "alice"
+password = "password123"
+
+# Query becomes:
+"SELECT * FROM users WHERE username='alice' AND password='password123'"

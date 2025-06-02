@@ -1,0 +1,16 @@
+import unittest
+
+class TestCalculatorSystem(unittest.TestCase):
+    def test_full_expression_evaluation(self):
+        # Simulate input through the calculator interface
+        result = evaluate_expression("2 + 3 * 4")
+        self.assertEqual(result, 14)  # 2 + (3 * 4) = 14
+
+    def test_state_management(self):
+        # Simulate consecutive operations
+        result = evaluate_expression("5 + 2")
+        result = evaluate_expression(" * 3")
+        self.assertEqual(result, 21)  # (5 + 2) * 3 = 21
+
+if __name__ == '__main__':
+    unittest.main()
