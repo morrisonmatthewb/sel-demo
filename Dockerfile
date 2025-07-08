@@ -36,19 +36,22 @@ COPY . .
 
 # Create storage directories and set permissions
 RUN mkdir -p storage/framework/{sessions,views,cache,testing} storage/logs bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+    && chmod -R 777 storage bootstrap/cache
 
-# Create SQLite database file
-RUN touch database/database.sqlite
+# Create database directory and SQLite file
+RUN mkdir -p database && touch database/database.sqlite && chmod 777 database/database.sqlite
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
+# Test artisan works
+RUN php artisan --version
+
 # Cache configuration
-RUN php artisan config:cache
+RUN php artisan config:clear && php artisan config:cache
 
 # Expose port
-EXPOSE 8000
+EXPOSE $PORT
 
-# Start the application
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+# Use Railway's PORT environment variable
+CMD php artisan serve --host=0.0.0.0 --port=$PORT
