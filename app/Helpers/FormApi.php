@@ -289,7 +289,7 @@ class FormApi
 
     public static function current_user(){
         #return session('userid', 'Default');
-        return "demo-defapp"
+        return "demo-default";
     }
 
 
