@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.2-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -11,9 +11,10 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     sqlite3 \
-    libsqlite3-dev
+    libsqlite3-dev \
+    libcurl4-openssl-dev
 
-# Install PHP extensions
+# Install PHP extensions (including curl for phpcas)
 RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
@@ -23,35 +24,48 @@ RUN docker-php-ext-install \
     pcntl \
     bcmath \
     gd \
-    zip
+    zip \
+    curl
+
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
 
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
-WORKDIR /app
+WORKDIR /var/www/html
 
 # Copy all application code
 COPY . .
 
 # Create storage directories and set permissions
 RUN mkdir -p storage/framework/{sessions,views,cache,testing} storage/logs bootstrap/cache \
-    && chmod -R 777 storage bootstrap/cache
+    && chmod -R 777 storage bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache
 
 # Create database directory and SQLite file
 RUN mkdir -p database && touch database/database.sqlite && chmod 777 database/database.sqlite
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Install PHP dependencies without running problematic scripts
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
-# Test artisan works
-RUN php artisan --version
+# Run only safe scripts
+RUN composer run-script post-autoload-dump
 
-# Cache configuration
-RUN php artisan config:clear && php artisan config:cache
+# Configure Apache
+COPY <<EOF /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/public
+    <Directory /var/www/html/public>
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+EOF
 
-# Expose port
-EXPOSE $PORT
+# Expose port 80
+EXPOSE 80
 
-# Use Railway's PORT environment variable
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+# Start Apache
+CMD ["apache2-foreground"]
