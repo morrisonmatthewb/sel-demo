@@ -288,13 +288,13 @@ class FormApi
     }
 
     public static function current_user(){
-        return session('userid', 'Default');
+        #return session('userid', 'Default');
+        return "demo-defapp"
     }
 
 
     public static function logged_in_admin(){
-       # return static::current_user() == "Admin";
-       return true;
+       return static::current_user() == "Admin";
     }
 
     public static function is_force_lock($user, $module) {
