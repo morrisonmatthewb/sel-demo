@@ -8,7 +8,7 @@ use App\Http\Middleware\CheckAdmin;
 // Acceptance testing
 use App\Models\Linkuser;
 use Illuminate\Http\Request;
-
+/*
 // Teacher Routes
 Route::prefix('labs/teacher-view')->middleware(CheckAdmin::class)->group(function() {
     Route::get('/', [AdminController::class, 'loadConsole'])->name('admin.console');
@@ -58,4 +58,19 @@ Route::any('/invite/{code}', function($code){
 Route::any('/logout', function(){
     session()->forget('userid');
     return redirect()->route('modules');
+});
+*/
+Route::get('/', function () {
+    return 'Laravel is working!';
+});
+
+Route::get('/debug', function () {
+    return response()->json([
+        'status' => 'ok',
+        'php_version' => PHP_VERSION,
+        'laravel_version' => app()->version(),
+        'app_key_set' => !empty(config('app.key')),
+        'db_connection' => config('database.default'),
+        'environment' => app()->environment(),
+    ]);
 });
