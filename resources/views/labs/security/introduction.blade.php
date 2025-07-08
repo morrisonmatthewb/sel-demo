@@ -34,7 +34,7 @@ $csrf_1 = resource_path("/codesnippets/security/csrf-1");
 $csrf_2 = resource_path("/codesnippets/security/csrf-2");
 $csrf_3 = resource_path("/codesnippets/security/csrf-3");
 $file_upload_1 = resource_path("/codesnippets/security/file-upload-1");
-$file_upload_2 = resource_path("/codesnippets/security/file-upload-2");
+$file_upload_2 = resource_path("/codesnippets/security/file-upload-1");
 $file_upload_3 = resource_path("/codesnippets/security/file-upload-3");
 
 $auth_content = '
