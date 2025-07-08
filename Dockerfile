@@ -7,11 +7,23 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libzip-dev \
     zip \
-    unzip
+    unzip \
+    sqlite3 \
+    libsqlite3-dev
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install \
+    pdo \
+    pdo_mysql \
+    pdo_sqlite \
+    mbstring \
+    exif \
+    pcntl \
+    bcmath \
+    gd \
+    zip
 
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -19,17 +31,20 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /app
 
-# Copy all application code first
+# Copy all application code
 COPY . .
 
 # Create storage directories and set permissions
 RUN mkdir -p storage/framework/{sessions,views,cache,testing} storage/logs bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-# Install PHP dependencies (after copying all files)
+# Create SQLite database file
+RUN touch database/database.sqlite
+
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Cache configuration (skip view cache)
+# Cache configuration
 RUN php artisan config:cache
 
 # Expose port
