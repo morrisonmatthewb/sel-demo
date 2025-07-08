@@ -1,9 +1,18 @@
+# nixpacks.toml
+[phases.setup]
+nixPkgs = ["nodejs", "php81", "php81Packages.composer"]
+
+[phases.install]
+cmds = [
+    "composer install --no-dev --optimize-autoloader --no-interaction"
+]
+
 [phases.build]
 cmds = [
-    "mkdir -p storage/framework/{sessions,views,cache,testing} storage/logs bootstrap/cache && chmod -R a+rw storage",
-    "php artisan config:cache",
-    "php artisan event:cache", 
-    "php artisan route:cache"
+    "mkdir -p storage/framework/{sessions,views,cache,testing} storage/logs bootstrap/cache",
+    "chmod -R 775 storage bootstrap/cache",
+    "php artisan config:clear",
+    "php artisan config:cache"
 ]
 
 [start]
