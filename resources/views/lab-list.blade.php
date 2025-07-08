@@ -9,6 +9,7 @@
 @csrf
 @endif
 @foreach($module_items as $module)
+@if ($module->name != "cicd-config-management")
 <div class="panel panel-default" style="padding:5px">
     <p>
     <span style="display: inline-block; width:20em;"><b>
@@ -25,6 +26,6 @@
     <span style="display: inline-block; color:{{ $module->status ? "green" : "red"}}">{{ $module->assigned ? ($module->status ? "Submitted" : "Unsubmitted") : ""}}</span></p>
     <p></p><pre style="white-space: pre-wrap; word-break: keep-all;">{{ $module->description() }}</pre><p></p>
     </div>
+@endif
 @endforeach
-
 @endsection

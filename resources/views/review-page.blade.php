@@ -24,7 +24,7 @@ $cannotSubmit
 
             <div class="bg-blue-50 p-6 rounded-lg mb-8">
                 <p id="instruction" class="text-xl font-semibold text-gray-700">
-                    Press the button below to {{ $isSubmitted ? 'un' : ''}}submit the module
+                    Press the button below to {{ $isSubmitted ? 'un' : ''}}submit the module. Submitting is disabled for demo purposes.
                 </p>
                 <br>
                 <p id="submitMsg" class="text-xl font-semibold text-gray-700">
@@ -51,14 +51,15 @@ $cannotSubmit
                 @else
                     <!-- Submit Button -->
                     <button type="button" onclick="submit(true)" id="submit"
-                        class="bg-green-500 text-white px-4 py-2 rounded"
+                        class="bg-green-500 text-white px-4 py-2 rounded" hidden disabled
                         {{ $isSubmitted ? 'hidden' : '' }}>
+                        
                         Submit
                     </button>
 
                     <!-- Unsubmit Button -->
                     <button type="button" onclick="submit(false)" id="unsubmit"
-                        class="bg-red-500 text-white px-4 py-2 rounded"
+                        class="bg-red-500 text-white px-4 py-2 rounded" 
                         {{ !$isSubmitted ? 'hidden' : '' }}>
                         Unsubmit
                     </button>

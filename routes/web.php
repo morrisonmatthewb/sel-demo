@@ -25,7 +25,6 @@ Route::prefix('labs/teacher-view')->middleware(CheckAdmin::class)->group(functio
 });
 
 // Lab Routes
-// TODO: require user logged in
 Route::prefix('labs')->group(function () {
 
     // Submit Route
